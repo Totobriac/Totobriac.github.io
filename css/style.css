@@ -1,0 +1,63 @@
+:root {
+  --canvas-height : 400px;
+  --canvas-width : 1200px;
+  --canvas-top : 50%;
+}
+
+#canvas {
+  position: relative;
+  top: 0;
+  left: 0;
+
+  height: var(--canvas-height);
+  width: var(--canvas-width);
+  background: transparent;
+
+  
+
+}
+
+@font-face {
+  font-family: "Tentacle";
+  src: url("../assets/fonts/DayOfTheTentacle-vnBL.ttf");
+}
+
+@font-face {
+  font-family: "Pixeboy";
+  src: url("../assets/fonts/Pixeboy-z8XGD.ttf");
+}
+
+@font-face {
+  font-family: "Wolf";
+  src: url("../assets/fonts/wolfenstein.ttf");
+}
+
+@font-face {
+  font-family: "HandWritten";
+  src: url("../assets/fonts/handWritten.ttf");
+}
+
+@font-face {
+  font-family: "Cooking";
+  src: url("../assets/fonts/Cooking.ttf");
+}
+
+@font-face {
+  font-family: "Pixel";
+  src: url("../assets/fonts/PixelEmulator-xq08.ttf");
+}
+
+@font-face {
+  font-family: "Roboto";
+  src: url("../assets/fonts/Roboto.ttf");
+}
+
+#back {
+  position: absolute;
+  top: var(--canvas-top);
+  left: 50%;
+  transform: translate(-50%, 0);
+  height: var(--canvas-height);
+  width: var(--canvas-width);
+  background-size: cover;
+}
