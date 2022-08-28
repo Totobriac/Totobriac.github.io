@@ -6,7 +6,7 @@ import { displayAllTools, displayTool, onTop,
 import { sound } from "../../../sound.js";
 import { playSound, stopSound } from "../sound.js";
 
-var garlicCrushSound = new sound("../assets/3_kitchen/sounds/garlic_crush.mp3", false);
+var garlicCrushSound = new sound("./assets/3_kitchen/sounds/garlic_crush.mp3", false);
 
 var choppingBoardSprite = new Image();
 choppingBoardSprite.src = "./assets/3_kitchen/chopping_board.png";

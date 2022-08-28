@@ -1,13 +1,13 @@
-const subRight = new Image();
+var subRight = new Image();
 subRight.src = "./assets/4_submarine/right_submarine.png";
 
-const subLeft = new Image();
+var subLeft = new Image();
 subLeft.src = "./assets/4_submarine/left_submarine.png";
 
-const subJet = new Image();
+var subJet = new Image();
 subJet.src = "./assets/4_submarine/bubble_jet.png";
 
-const subJetRight = new Image();
+var subJetRight = new Image();
 subJetRight.src = "./assets/4_submarine/bubble_jet_right.png";
 
 import { game } from "../../script.js";
@@ -34,6 +34,7 @@ export function drawSubmarine(ctx, dino, mousePosition) {
 
 function update(dino, game) {
   dino.tickCount += 1;
+
   dino.mouseX = game.mousePosition.x;
   dino.mouseY = game.mousePosition.y;
   dx = dino.x - dino.mouseX;
@@ -54,4 +55,4 @@ function getAngle(x, y, mouse) {
   return theta
 }
 
-export {dx, dy};
+export { dx, dy };

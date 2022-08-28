@@ -1,16 +1,16 @@
 import { Tool } from "./tool.js";
 import { burners } from "./stove.js";
 import { mouse } from "../control.js";
-import { addStep } from "../tools.js";
+import { addStep, stepDone } from "../tools.js";
 import { pan } from "../toolGeneration.js";
 import { endLevel } from "../startLevel3.js";
 
 import { sound } from "../../../sound.js";
 import { playSound, stopSound } from "../sound.js";
 
-var meltingButterSound = new sound("../assets/3_kitchen/sounds/butter_pan.mp3", false);
-var stirFrySound = new sound("../assets/3_kitchen/sounds/stir_fry.mp3", true);
-var sauceSound = new sound("../assets/3_kitchen/sounds/sauce.mp3", true);
+var meltingButterSound = new sound("./assets/3_kitchen/sounds/butter_pan.mp3", false);
+var stirFrySound = new sound("./assets/3_kitchen/sounds/stir_fry.mp3", true);
+var sauceSound = new sound("./assets/3_kitchen/sounds/sauce.mp3", true);
 
 var onionChoppedSprite = new Image();
 onionChoppedSprite.src = "./assets/3_kitchen/onion_chopped.png";
@@ -147,8 +147,8 @@ class Pan extends Tool {
   draw() {
     super.draw();
 
-    if (this.hasSauce) {
-      if (sauceRadius === 0) playSound(sauceSound, 0.3);
+    if (this.hasSauce ) {
+      if (sauceRadius === 0 && stepDone != 18) playSound(sauceSound, 0.3);
       if (sauceRadius < 57) sauceRadius += 0.2;
       if (Math.floor(sauceRadius) === 57) addStep(16);
       this.ctx.fillStyle = "red";
@@ -325,8 +325,10 @@ class Pan extends Tool {
     this.ctx.drawImage(cookedPastasSprite, 469 * this.frame, 0, 469, 500, this.x + this.width / 3, this.y + 2, 117, 125);
 
     if (this.frame === 8 && this.tickcount === 0) {
+      addStep(18);
+      stopSound(sauceSound);
       endLevel();
-    } 
+    }
   }
 }
 

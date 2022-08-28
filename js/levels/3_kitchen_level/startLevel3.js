@@ -8,7 +8,7 @@ import { playSound, stopSound } from "./sound.js";
 import { sound } from "../../sound.js";
 import { src } from "./syphonSrc.js";
 
-var ambianceSound = new sound("../assets/3_kitchen/sounds/ambiance.mp3", true);
+var ambianceSound = new sound("./assets/3_kitchen/sounds/ambiance.mp3", true);
 
 var canvasStyle = document.body.style;
 canvasStyle.setProperty('--canvas-height', '400px');
@@ -70,13 +70,13 @@ export function startLevel(game, ctx) {
 
     if (!mask) {
       drawTools(ctx, game);
-     
+
       if (levelDone) {
         if (zoomTick < 495) {
           zoomTick++;
           ctx.translate(-0.32, -0.355)
           ctx.scale(1.004, 1.004);
-        } else {          
+        } else {
           displayTool([])
           mask = true;
         }

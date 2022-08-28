@@ -17,6 +17,9 @@ class Notepad extends Tool {
     this.lines = this.createLines();
   }
   draw() {
+
+    if ( stepDone === 18) this.big = false;
+
     if (oldStep != stepDone) {
       this.makeItBig();
       oldStep = stepDone;
@@ -26,10 +29,11 @@ class Notepad extends Tool {
       this.makeItBig();
     };
 
-    if (this.big) {    
+    if (this.big) {
       this.width = 466;
       this.height = 600;
       this.x = 367;
+      this.y = -(stepDone * 25) + 50;    
       super.draw();
       this.ctx.fillStyle = "black";
       this.ctx.font = "30px Cooking";

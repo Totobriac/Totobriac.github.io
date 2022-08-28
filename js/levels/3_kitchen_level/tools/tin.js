@@ -1,6 +1,6 @@
 import { Tool } from "./tool.js";
 import { sink, deleteTool } from "../tools.js";
-import { pasta } from "../toolGeneration.js";
+import { onion, pasta } from "../toolGeneration.js";
 
 
 var choppingBoardSprite = new Image();
@@ -11,6 +11,8 @@ sideTinSprite.src = "./assets/3_kitchen/side_tin.png";
 
 var label = new Image();
 label.src = "https://www.mockofun.com/wp-content/uploads/2020/04/tomato-sauce-label-5828.jpg";
+
+var backPic = document.getElementById("back");
 
 var tempCanvas = document.createElement("canvas");
 var tempContext = tempCanvas.getContext("2d");
@@ -45,7 +47,6 @@ class Tin extends Tool {
 
       pasta.isDisplayed = false;
 
-      var backPic = document.getElementById("back");
       backPic.style.background = "url('./assets/3_kitchen/peeled_onion_back.png')";
       this.ctx.fillStyle = "rgb(0,0,0,0.81)";
       this.ctx.fillRect(0, 0, canvas.width, canvas.height);
@@ -58,6 +59,9 @@ class Tin extends Tool {
 
     if (this.inPlace && this.isOpen && this.isSelected) {
       this.pan.hasSauce = true;
+      
+      onion.stopFryingSound();
+
       deleteTool("tin");
     }
   }
@@ -74,6 +78,7 @@ class Tin extends Tool {
     }
     this.isOpen = true;
     pasta.isDisplayed = true;
+    backPic.style.background = "none";
   }
 }
 

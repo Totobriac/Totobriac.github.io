@@ -19,7 +19,7 @@ function load(ctx, game) {
 }
 
 async function drawTools(ctx, game) {
-  await  load(ctx, game);
+  await load(ctx, game);
   for (let i = 0; i < tools.length; i++) {
     if (tools[i].isDisplayed === true) {
       tools[i].draw();
@@ -30,6 +30,7 @@ async function drawTools(ctx, game) {
   drawBottomPress(ctx);
   selectable();
   if (sink) sink.drawFaucet(ctx);
+ 
 }
 
 function displayTool(toolL) {
@@ -135,6 +136,9 @@ function selectable() {
     case 17 :
       objects = ["colander"];
     break;
+    case 18 : 
+      objects = [];
+    break;
   }
 
   var selectableTools = ["notepad", ...objects ];
@@ -162,7 +166,7 @@ function calculateOffset(e) {
 
 function move(e) {
   for (let i = 0; i < tools.length; i++) {
-    if (tools[i].isSelected === true) {
+    if (tools[i].isSelected) {
       tools[i].x = e.offsetX - tools[i].offset.x;
       tools[i].y = e.offsetY - tools[i].offset.y;
       tools[i].isMoving = true;
