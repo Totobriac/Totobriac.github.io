@@ -6,9 +6,9 @@ export class Control {
       game.keyDown = e;
       game.keyUp = " ";
 
-      if (isFinite(e.key) && e.key != " ") {
-        game.level = parseInt(e.key);
-      }
+      // if (isFinite(e.key) && e.key != " ") {
+      //   game.level = parseInt(e.key);
+      // }
     })
     window.addEventListener('keyup', function (e) {
       game.keyDown = " ";
@@ -19,7 +19,7 @@ export class Control {
       if (position) game.mouseMovePosition = { x: position.x, y: position.y };
     });
     window.addEventListener('mousedown', function (e) {
-      if (game.level === 4 || game.level === 7) {
+      if (game.level === 4 || game.level === 7 || game.level === 10) {
         var position = getCursorPosition(canvas, e);
         if (position) game.mousePosition = { x: position.x, y: position.y }
       }

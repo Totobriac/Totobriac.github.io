@@ -1,5 +1,5 @@
 import { drawRoad, drawBackground, drawGrass, drawTrees, drawBoars, drawForest_1, drawForest_2 } from "./drawRoad.js";
-import { engineOn } from "./startLevel6.js";
+import { engineOn, motoFinished, updateVol, strokesSound, vol } from "./startLevel6.js";
 
 var motoSprite = new Image();
 motoSprite.src = "./assets/6_race/moto-6.png";
@@ -90,10 +90,10 @@ class Segment {
 }
 
 export function generateRoad(game) {
-  if (game.loadedLevel[6] === false) {
+  if (!game.loadedLevel[6]) {
     var sum = 0;
     var sections = [];
-    while (sum < 600) {
+    while (sum < 100) {
       var sectionLength = 20 + 20 * (Math.floor(Math.random() * 3));
       sum += sectionLength;
       sections.push(sectionLength);
@@ -127,15 +127,16 @@ function calculateDY(FOV) {
   var dY = (canvas.height / 2) / Math.tan((FOV / 2 * Math.PI) / 180);
   return dY;
 }
+
 export function drawScenery(ctx, game) {
 
-
-  for (let i = 0; i < points.length; i++) {    
+  for (let i = 0; i < points.length; i++) {
     points[i].update();
 
-     if (points[0].z < 600) {
+    if (points[0].z < 600) {
       speed = 0;
       showHotel += 0.005;
+      vol > 0.0001 ? updateVol(-0.0001) : strokesSound.stop();
     }
   }
 
@@ -149,6 +150,7 @@ export function drawScenery(ctx, game) {
     if (showHotel >= 400) {
       showHotel = 400;
       light = true;
+      setTimeout ( motoFinished, 1500);
     }
     drawForest_1(ctx, showHotel);
     drawForest_2(ctx, -showHotel);
@@ -171,12 +173,12 @@ export function drawScenery(ctx, game) {
 }
 
 function fallAnimation(ctx) {
-  fallTickCount ++;
-  if (fallMotoFrame < 3 && fallTickCount % 10 === 0) fallMotoFrame ++;
+  fallTickCount++;
+  if (fallMotoFrame < 3 && fallTickCount % 10 === 0) fallMotoFrame++;
   ctx.drawImage(fallMotoSprite, 90 * fallMotoFrame, 0, 91, 110, 579, 285, 91, 110);
   if (fallMotoFrame === 3) {
-    if (fallTickCount % 10 === 0 && fallDriverFrame < 7) fallDriverFrame ++;
-    ctx.drawImage(fallDriverSprite,fallDriverFrame * 84,0,84,110,670,285,84,110);
+    if (fallTickCount % 10 === 0 && fallDriverFrame < 7) fallDriverFrame++;
+    ctx.drawImage(fallDriverSprite, fallDriverFrame * 84, 0, 84, 110, 670, 285, 84, 110);
     if (fallDriverFrame === 7) {
       falling = false;
       fallTickCount = 0;
@@ -196,7 +198,7 @@ function checkCollision() {
       : checkTrunk = canvas.width / 2 + (150 * points[i].scale) + points[i].offset - points[i].curve;
     var trunkColl;
     checkTrunk > 625 || checkTrunk + 100 < 575 ? trunkColl = false : trunkColl = true;
-    if (points[i].z < 250 && points[i].z > 100 && points[i].hasTrunk && trunkColl ) return true;
+    if (points[i].z < 250 && points[i].z > 100 && points[i].hasTrunk && trunkColl) return true;
   }
   return false;
 }
@@ -221,7 +223,8 @@ export function steer(game) {
       if (playerX > -575) offset += -0.002;
     };
   }
-  playerX > 575 || playerX < -575 || !engineOn  ? speed = 0 : speed = 0 ? speed = 20 : speed = 20;
+  playerX > 575 || playerX < -575 || !engineOn ? speed = 0 : speed = 0 ? speed = 20 : speed = 20;
+
 }
 
 export { showHotel };

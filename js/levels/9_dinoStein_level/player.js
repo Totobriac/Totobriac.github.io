@@ -22,9 +22,11 @@ export class Player {
     this.speedTick = 0;
     this.maxTickCount = 4;
     this.chosenWeapon = 0;
-    this.discoWeapon = 0;
+    this.discoWeapon =0;
     this.keys = 0;
     this.life = 100;
+
+    this.canMove = true;
   }
   up() {
     this.moveX = 1;
@@ -57,29 +59,31 @@ export class Player {
     var collision = false;
     var xGridNb = Math.floor(x / this.map.mapS);
     var yGridNb = Math.floor(y / this.map.mapS);
-   
+    this.xGrid = xGridNb;
+    this.yGrid = yGridNb;
+
     if (this.map.checkPlayerCollision(yGridNb, xGridNb)) {
       collision = true;
     };
     return collision;
-  } 
+  }
   update() {
     var newX = this.x + this.moveX * Math.cos(this.angle) * this.speed;
     var newY = this.y + this.moveY * Math.sin(this.angle) * this.speed;
 
     this.angle += this.rotate * this.rotationSpeed;
-    this.angle = normalizeAngle(this.angle);  
+    this.angle = normalizeAngle(this.angle);
 
      if (!this.checkForCollision(newX, this.y)) {
-      this.x = newX;      
+      this.x = newX;
     }
 
-     if (!this.checkForCollision(this.x, newY)) {      
+     if (!this.checkForCollision(this.x, newY)) {
       this.y = newY;
     }
-    
+
     this.checkForItem();
-      if (this.map.isSearching === true) this.resetSearch();    
+      if (this.map.isSearching === true) this.resetSearch();
   }
   draw() {
     this.update();

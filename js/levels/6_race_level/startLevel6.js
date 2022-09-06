@@ -1,5 +1,4 @@
 import { generateRoad, drawScenery } from "./road.js";
-
 import { sound } from "../../sound.js";
 
 var strokesSound = new sound("./assets/6_race/strokes.mp3", false);
@@ -9,15 +8,16 @@ arrowsKeys.src = "./assets/6_race/keys_r_l.png";
 
 var circleD = 0;
 var start = false;
-
 var width = 20;
 var widthTickCount = 0;
 var engineOn = false;
+var motoArrived = false;
+var vol = 1;
 
 window.addEventListener('keydown', function (event) {
   if (event.key === "ArrowRight" || event.key === "ArrowLeft") {
     strokesSound.play();
-    strokesSound.volume(1);
+    strokesSound.volume(vol);
     startGame();
   }
 })
@@ -39,12 +39,27 @@ export function startLevel(game, ctx) {
 
   if (game.start) {
 
+    var element = document.getElementById("back");
+    element.classList.toggle("crt");
+
     widthTickCount ++;
-    if (widthTickCount % 4 === 0) width --;
+
     generateRoad(game);
     drawScenery(ctx, game);
 
-    width > 0 ? drawIntro(ctx) : engineOn = true;
+    if (widthTickCount % 4 === 0 ) {
+      if (!motoArrived && width > 0) {
+        width --;
+      } else if (motoArrived) {
+        width < 20 ? width ++ : game.switchLevel(7);
+      }
+    }
+
+    if (motoArrived) {
+      drawEndIntro(ctx);
+    } else {
+      width > 0 ? drawIntro(ctx) : engineOn = true;
+    }
 
   }
 }
@@ -62,8 +77,35 @@ function drawIntro(ctx) {
   ctx.restore();
 }
 
+function drawEndIntro(ctx) {
+
+  ctx.save();
+  ctx.strokeStyle = "white";
+  ctx.lineWidth = width;
+  for (let i = 0; i <= canvas.width; i += 20) {
+    ctx.beginPath();
+    ctx.moveTo(i, 0);
+    ctx.lineTo(i, canvas.height);
+    ctx.stroke();
+  }
+  ctx.restore();
+
+  var element = document.getElementById("back");
+  element.classList.remove("crt");
+
+}
+
 function startGame() {
   start = true;
 };
 
-export { engineOn };
+function motoFinished() {
+  motoArrived = true;
+}
+
+function updateVol (nb) {
+  vol += nb;
+  strokesSound.volume(vol);
+}
+
+export { engineOn, motoFinished, updateVol, strokesSound, vol };
