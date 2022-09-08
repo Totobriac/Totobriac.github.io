@@ -32,6 +32,9 @@ var lines = [
   "CONTACT:",
   "contact@vincentcailly.com",
   "https://www.linkedin.com/in/vincentcailly/",
+  "",
+  "",
+  "That's all folks!!!",
 
 ]
 

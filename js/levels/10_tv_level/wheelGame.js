@@ -98,8 +98,12 @@ function playWheelGame(ctx) {
 	} else {
 		ctx.drawImage(backSprite, 240, 0);
 
-		index != 6 ? drawQuestion(ctx) : endAnimation(ctx), start2();
-
+		if (index != 6) {
+			drawQuestion(ctx) 
+		} else {
+			endAnimation(ctx);
+			start2();
+		}
 		flipCard(ctx);
 		vanna.draw();
 
