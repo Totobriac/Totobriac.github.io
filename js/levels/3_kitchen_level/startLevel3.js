@@ -45,7 +45,7 @@ window.addEventListener('mousedown', function () {
   startGame();
 })
 
-export function startLevel(game, ctx) {
+export function startLevel(ctx, game, dino) {
 
   if (circleD < 60 && !start) circleD += 0.5;
   if (circleD >= 0.5 && start) circleD -= 0.5;

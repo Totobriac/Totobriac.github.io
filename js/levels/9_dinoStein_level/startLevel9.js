@@ -51,7 +51,7 @@ window.addEventListener('keydown', function(e) {
 })
 
 
-export function startLevel(game, ctx) {
+export function startLevel(ctx, game, dino) {
 
   ctx.globalAlpha = 1;
 

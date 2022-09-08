@@ -35,7 +35,7 @@ export function anim(game, dino, ctx) {
       loadLevel(2, ctx, game, dino);
       break;
     case 3:
-      loadLevel(3, game, ctx);
+      loadLevel(3, ctx, game, dino );
       break;
     case 4:
       loadLevel(4, ctx, game, dino);
@@ -44,19 +44,19 @@ export function anim(game, dino, ctx) {
       loadLevel(5, ctx, game, dino);
       break;
     case 6:
-      loadLevel(6, game, ctx);
+      loadLevel(6, ctx, game, dino);
       break;
     case 7:
-      loadLevel(7, ctx, game);
+      loadLevel(7, ctx, game, dino);
       break;
     case 8:
-      loadLevel(8, game, ctx);
+      loadLevel(8, ctx, game, dino);
       break;
     case 9:
-      loadLevel(9, game, ctx);
+      loadLevel(9, ctx, game, dino);
       break;
     case 10:
-      loadLevel(10, game, ctx);
+      loadLevel(10, ctx, game, dino);
       break;
   }
 
