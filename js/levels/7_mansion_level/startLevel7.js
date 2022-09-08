@@ -14,7 +14,7 @@ window.addEventListener('mousedown', function () {
 })
 
 export function startLevel(ctx, game, dino) {
-
+ 
   if (circleD < 60 && !start) circleD += 0.5;
   if (circleD >= 0.5 && start) circleD -= 0.5;
   if (circleD === 0 && start) game.start = true;

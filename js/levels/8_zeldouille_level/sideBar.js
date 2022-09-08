@@ -27,15 +27,18 @@ class SideBar {
     this.ctx.fillRect(this.x, this.y, this.width, this.height);
 
     this.ctx.fillStyle = this.mapColor;
+    this.ctx.save()
     this.ctx.fillRect(this.x + this.mapOffset,
       this.height - this.mapHeight - this.mapOffset + 8,
       this.width - this.mapOffset * 2,
       this.mapHeight);
+      
     this.ctx.font = "bold 30px pixel";
     this.ctx.fillStyle = "red";
+    this.ctx.textBaseline = "middle";   
     this.ctx.textAlign = "center";
     this.ctx.fillText("-LIFE-", 1052, 50);
-
+    this.ctx.restore();
     var fullHeart = Math.floor(zelda.life / 2);
     var halfHeart = zelda.life - fullHeart * 2;
     var emptyHeart = 4 - fullHeart - halfHeart;
@@ -72,9 +75,17 @@ class SideBar {
     this.ctx.fillRect(1163, 224, 4, 4);
     this.ctx.fillRect(1122, 118, 22, 22);
 
+    this.ctx.save();
+
+    this.ctx.textAlign = "center";
+
     this.ctx.font = "30px pixel";
     this.ctx.fillStyle = "white";
     this.ctx.fillText("A", 1135, 140);
+    this.ctx.restore();
+    
+
+    
 
 
     this.ctx.fillStyle = "rgb(51, 51, 153)";
@@ -89,9 +100,15 @@ class SideBar {
     this.ctx.fillRect(1083, 224, 4, 4);
     this.ctx.fillRect(1042, 118, 22, 22);
 
+    this.ctx.save();
+    this.ctx.textAlign = "center";
+
     this.ctx.font = "30px pixel";
     this.ctx.fillStyle = "white";
     this.ctx.fillText("B", 1054, 140);
+
+    this.ctx.restore();
+    
 
     this.ctx.drawImage(itemsSprite, 84, 0, 32, 32, 930, 190, 32, 32);
     this.ctx.font = "32px pixel";
@@ -100,7 +117,10 @@ class SideBar {
     var key;
     zelda.hasKey === true ? key = 1 : key = 0;
 
+    this.ctx.save();
+    this.ctx.textAlign = "center";
     this.ctx.fillText("X" + key, 990, 220);
+    this.ctx.restore();
 
     if (zelda.hasSword) {
       this.ctx.drawImage(swordSprite, 96, 0, 48, 48, 1104, 145, 64, 64);

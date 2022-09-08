@@ -14,6 +14,7 @@ var dial = [];
 function drawText(ctx, text) {
   var lines = getLines(text);
   lines.forEach((line, i) => {
+    ctx.save();
     ctx.textBaseline = "top";
     ctx.textAlign = "start";
     ctx.font = "50px Pixeboy";
@@ -22,6 +23,7 @@ function drawText(ctx, text) {
     ctx.fillRect(20, 20 + i * 40, width, 36);
     ctx.fillStyle = "orange";
     ctx.fillText(line, 20, i * 40);
+    ctx.restore();
   });
 }
 
@@ -47,6 +49,7 @@ function getLines(text) {
 
 function dialogue(ctx, hoveredSprite) {
   dial.forEach((choice, i) => {
+    ctx.save();
     ctx.textBaseline = "top";
     ctx.textAlign = "start";
     ctx.font = "40px Pixeboy";
@@ -56,6 +59,7 @@ function dialogue(ctx, hoveredSprite) {
     ctx.fillRect(40, 70 + i * 50, width, 40);
     hoveredSprite && hoveredSprite.name === "answer" + num.toString() ? ctx.fillStyle = "black" : ctx.fillStyle = "orange";
     ctx.fillText(choice, 40, 60 + i * 50);
+    ctx.restore();
   });
 }
 

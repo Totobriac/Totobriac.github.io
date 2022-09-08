@@ -52,7 +52,6 @@ window.addEventListener('keydown', function(e) {
 
 
 export function startLevel(ctx, game, dino) {
-
   ctx.globalAlpha = 1;
 
   if (circleD < 60 && !start) circleD += 0.5;

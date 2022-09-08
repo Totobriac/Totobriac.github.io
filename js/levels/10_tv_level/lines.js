@@ -14,7 +14,7 @@ var lines = [
   "-Lodev.org",
   "  ",
   "CREDITS:",
-  "Iggy Pop - Lust for life: 9 Bit Tribute Band",
+  "Iggy Pop - Lust for life: 8 Bit Tribute Band",
   "David Bowie - Starman [8-bit]: TimTheHuman",
   "Himno Argentino: Jonysniuk",
   "The Velvet Underground - Sunday Morning: Paul Scott",
