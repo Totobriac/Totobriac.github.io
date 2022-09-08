@@ -1,7 +1,7 @@
 import { generateBackground } from "./nuit_etoilée.js";
 import { drawDinoPiano } from "./dino_piano.js";
 import { generateBridge } from "./bridge.js";
-import { generatePiano } from "./piano.js";
+import { generatePiano, stopPiano } from "./piano.js";
 import { generateRain } from "./rain.js";
 import { introIn, introOut } from "./intro.js";
 import { game } from "../../script.js";
@@ -52,6 +52,7 @@ export function startLevel(ctx, game, dino) {
   }
 
   if (hasEnded) {
+    stopPiano();
     introOut(ctx, snap, game);
   }
 }

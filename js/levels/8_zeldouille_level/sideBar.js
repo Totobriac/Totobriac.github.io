@@ -31,7 +31,7 @@ class SideBar {
       this.height - this.mapHeight - this.mapOffset + 8,
       this.width - this.mapOffset * 2,
       this.mapHeight);
-
+      this.ctx.save();
     this.ctx.font = "bold 30px pixel";
     this.ctx.fillStyle = "red";
     this.ctx.textAlign = "center";
@@ -108,6 +108,7 @@ class SideBar {
     }
 
     if (zelda.hasPotion) this.ctx.drawImage(potionSprite, 1038, 150);
+    this.ctx.restore();
   }
   resetHearts() {
     this.hearts = [0, 0, 0, 0];

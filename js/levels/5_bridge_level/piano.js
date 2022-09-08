@@ -124,7 +124,9 @@ function drawLine(ctx) {
   ctx.stroke();
 }
 
-document.addEventListener('keydown', function (event) {
+document.addEventListener('keydown', playPiano);
+
+function playPiano(event) {
   if (event.repeat) return
   switch (event.key) {
     case "ArrowUp":
@@ -135,6 +137,10 @@ document.addEventListener('keydown', function (event) {
       hit = true;
       break;
   }
-});
+}
 
-export { partition };
+function stopPiano() {
+  document.removeEventListener('keydown', playPiano);
+}
+
+export { partition, stopPiano };

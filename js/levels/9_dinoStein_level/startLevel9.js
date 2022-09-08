@@ -36,7 +36,7 @@ var hud;
 var soundPlayer;
 var miniMap;
 var weapon;
-var booting = false;
+var booting = true;
 
 var bossKilled = 0;
 

@@ -33,9 +33,11 @@ class Action {
     this.isHovered === true ? this.ctx.fillStyle = this.color1 : this.ctx.fillStyle = this.color2;
     this.ctx.fillRect(this.x, this.y - 30, 145, 45);
     this.isHovered === true ? this.ctx.fillStyle = this.color2 : this.ctx.fillStyle = this.color1;
+    this.ctx.save();
     this.ctx.font = "40px Tentacle";
     this.ctx.textAlign = "center";
     this.ctx.textBaseline = "middle";
+    this.ctx.restore();
     this.ctx.fillText(this.action, this.x + 70, this.y - 5);
   }
 }
