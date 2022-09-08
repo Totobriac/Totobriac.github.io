@@ -1,6 +1,8 @@
 import { Sprite } from "./sprite.js";
 import { getPath } from "./pathFinder.js";
 import { distance } from "./functions.js";
+import { unlockDoor } from "./init.js";
+import { updateKilledBosses, bossKilled } from"./startLevel9.js";
 
 
 class Enemy extends Sprite {
@@ -31,6 +33,18 @@ class Enemy extends Sprite {
 
     this.setStats();
   }
+  unclockDoor(){
+    if (this.character === "boss1" && this.life <= 0 && bossKilled === 0) {
+      updateKilledBosses(1);
+      unlockDoor(21,25);
+    } else if (this.character === "boss2" && this.life <= 0 && bossKilled === 1) {
+      unlockDoor(19,32);
+      updateKilledBosses(2);
+    } else if (this.character === "boss3" && this.life <= 0 && bossKilled === 2) {
+      unlockDoor(16,19);
+      updateKilledBosses(3);
+    }
+  }
   draw() {
     this.angle <= 90 || this.angle >= 270 ? this.Xoffset = 32 : this.Xoffset = -32;
     this.angle < 180 ? this.Yoffset = 32 : this.Yoffset = -32;
@@ -47,6 +61,7 @@ class Enemy extends Sprite {
     return collision;
   }
   update() {
+    this.unclockDoor();
     this.playXGrid = Math.floor(this.player.x / 64);
     this.playYGrid = Math.floor(this.player.y / 64);
     if (!this.still && !this.alerted) {
@@ -207,7 +222,7 @@ class Enemy extends Sprite {
         } else {
           this.hitTickCount = 0;
           this.isHitten = false;
-          this.player.chosenWeapon != 3 ? this.life-- : this.life -= 2;
+          this.player.chosenWeapon != 3 ? this.life-=2 : this.life -= 4;
         }
       }
       this.imageX = 0;
@@ -244,35 +259,35 @@ class Enemy extends Sprite {
     switch (this.character) {
       case "guard":
         this.fireRange = Math.floor(Math.random() * 2 + 2);
-        this.life = 6;
+        this.life = 4;
         this.speed = Math.floor(Math.random() * 1) + 2
         break;
       case "officer":
         this.fireRange = Math.floor(Math.random() * 2 + 4);
-        this.life = 8;
+        this.life = 6;
         this.speed = Math.floor(Math.random() * 2) + 2
         break;
       case "dog":
         this.fireRange = 2;
-        this.life = 6;
-        this.speed = 5;
+        this.life = 4;
+        this.speed = 4;
         break;
       case "boss1":
         this.type = "boss";
         this.fireRange = Math.floor(Math.random() * 2 + 4);
-        this.life = 20;
-        this.speed = 4;
+        this.life = 10;
+        this.speed = 4;        
         break;
       case "boss2":
         this.type = "boss";
         this.fireRange = Math.floor(Math.random() * 2 + 4);
-        this.life = 25;
+        this.life = 15;
         this.speed = 4;
         break;
       case "boss3":
         this.type = "boss";
         this.fireRange = Math.floor(Math.random() * 2 + 2);
-        this.life = 30;
+        this.life = 20;
         this.speed = 1;
         break;
     }
