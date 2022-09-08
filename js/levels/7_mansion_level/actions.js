@@ -237,7 +237,7 @@ var outsideAction = [
 
   ["Prendre", "scotch", grabDuct, " A quoi cela va me servir ? "],
   // ["Pousser", "poubelle", push, " Oh hisse! "],
-  ["Pousser", "poubelle", endGame, " Oh hisse! "],
+  //["Pousser", "poubelle", endGame, " Oh hisse! "],
 
   ["Pousser", "poubelle ", push, " Oh hisse! "],
   ["Pousser", "poubelle  ", push, " Oh hisse! "],
