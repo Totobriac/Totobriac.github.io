@@ -88,7 +88,6 @@ class Vanna {
   }
   exit() {
     this.exiting = true;
-    console.log("rr");
   }
   draw() {
     if(this.exiting) {

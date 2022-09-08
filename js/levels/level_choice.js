@@ -6,7 +6,7 @@ choice.src = "../assets/lvl_choice.png";
 var levels = [];
 var selectedLevel;
 
-window.addEventListener('mousedown', function() {
+window.addEventListener('mousedown', function () {
 	if (selectedLevel != undefined && selectedLevel != 11) game.switchLevel(selectedLevel);
 	if (selectedLevel === 11) {
 		localStorage.clear();
@@ -42,24 +42,25 @@ class Level {
 function chooseLevel(ctx) {
 
 	var level = parseInt(localStorage.getItem("level"));
-
 	if (!level) {
 		game.switchLevel(0);
 		localStorage.setItem("level", "0");
 	} else {
 
 		if (!levels.length) {
-			for (let i = 0; i < level; i++) {
+			
+			for (let i = 0; i < level + 1; i++) {
 				levels.push(new Level(i, choice, ctx))
 			}
 			levels.push(new Level(11, choice, ctx))
 		}
+
 		levels.forEach(lvl => {
 			lvl.draw();
 		});
 
 		checkHoveredLvl();
-		
+
 	}
 }
 
@@ -68,8 +69,8 @@ function checkHoveredLvl() {
 	var mY = game.mouseMovePosition.y;
 
 	levels.forEach(lvl => {
-		
-		if(!collision(mX, mY, lvl.x, lvl.y, 160, 120)) {
+
+		if (!collision(mX, mY, lvl.x, lvl.y, 160, 120)) {
 			lvl.color = "rgb(230, 230, 230)"
 		} else {
 			lvl.color = "white";
