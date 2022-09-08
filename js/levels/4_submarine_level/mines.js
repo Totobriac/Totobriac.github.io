@@ -1,4 +1,5 @@
 import { shark } from "./shark.js";
+import { updateScore, score } from "./startLevel4.js";
 
 var mineSprite = new Image();
 mineSprite.src = "./assets/4_submarine/mine_large.png";
@@ -76,7 +77,7 @@ function generateMines(ctx, game, dino) {
     minesArray[i].update(dino);
 
     if (minesArray[i].distance < minesArray[i].radius + dino.radius || sharkExplosion ) {
-      if (!sharkExplosion && game.score < 52) game.score -= 4;
+      if (!sharkExplosion && score < 52) updateScore(-4);
       addExplosion(minesArray[i].x, minesArray[i].y, ctx);
       minesArray.splice(i, 1);
       continue

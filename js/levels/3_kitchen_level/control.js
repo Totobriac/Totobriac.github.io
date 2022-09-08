@@ -18,7 +18,7 @@ var mouse = {
 };
 
 function setControls() {
-  canvas.addEventListener("mousedown", onMouseDown);
+  canvas.addEventListener("mousedown", mouseDown);
   canvas.addEventListener("mousemove", onMouseMove);
   canvas.addEventListener("mouseup", onMouseUp);
   window.addEventListener('keydown', function (e) {
@@ -26,7 +26,7 @@ function setControls() {
   })
 }
 
-function onMouseDown(e) {
+function mouseDown(e) {
   mouse.downX = e.offsetX;
   mouse.downY = e.offsetY;
   getSelectedTool(e);
@@ -52,6 +52,10 @@ function onMouseDown(e) {
   }
 }
 
+function removeMouseDown() {
+  canvas.removeEventListener("mousedown", mouseDown);
+}
+
 function onMouseMove(e) {
   mouse = getCursorPosition(e);
   move(e);
@@ -64,4 +68,4 @@ function onMouseUp(e) {
   mouse.upY = e.offsetY;
 }
 
-export { setControls, selectedTool, mouse, key };
+export { setControls, selectedTool, mouse, key, removeMouseDown };

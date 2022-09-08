@@ -21,9 +21,9 @@ canvasStyle.setProperty('--canvas-top', top +'px');
 canvasStyle.setProperty('--canvas-left', left +'px');
 
 
-const dino = new Dino();
-const game = new Game();
-const control = new Control(game);
+var dino = new Dino();
+var game = new Game();
+var control = new Control(game);
 
 var fps = 60;
 var now;

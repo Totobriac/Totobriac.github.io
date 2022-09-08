@@ -21,5 +21,6 @@ export class Game {
     this.level = lvl;
     this.levelDone = false;
     this.score = 0;
+    
   }
 }

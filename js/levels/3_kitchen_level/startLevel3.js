@@ -1,6 +1,6 @@
 import { drawStove } from "./tools/stove.js";
 import { drawTools, sink, displayTool } from "./tools.js";
-import { setControls } from "./control.js";
+import { removeMouseDown, setControls } from "./control.js";
 import { generateTable } from "./tools/table.js";
 import { top } from "../../script.js";
 import { drawBubbles } from "./bubbleIntro.js";
@@ -95,6 +95,7 @@ export function startLevel(ctx, game, dino) {
           finalRadius -= 2;
           if (ambianceVol >= 0.0001) ambianceVol -= 0.0001
         } else {
+          removeMouseDown();
           ambianceSound.stop();
           game.switchLevel(4);
         }

@@ -1,3 +1,5 @@
+import { updateScore, score } from "./startLevel4.js";
+
 var sharkRightSprite = new Image();
 sharkRightSprite.src = "./assets/4_submarine/shark_right.png";
 
@@ -126,7 +128,7 @@ class Shark {
         }
       } else {
         if (this.oldFrame != this.frame) {
-            if (this.game.score > 1 && this.game.score < 52) this.game.score --;
+            if (score > 1 && score < 52) updateScore(-1);
             this.oldFrame = this.frame;
         }
 

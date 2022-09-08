@@ -21,6 +21,8 @@ var isDiving = false;
 var splash = false;
 var vol = 1;
 
+var score = 0;
+
 var curtain1 = {
   x: -600,
   y: 0,
@@ -51,7 +53,7 @@ export function startLevel(ctx, game, dino) {
   if (circleD < 60 && !start) circleD += 0.5;
   if (circleD >= 0.5 && start) circleD -= 0.5;
   if (circleD === 0 && start) game.start = true;
- 
+
   ctx.drawImage(mouseKeys, 545, 130, 160 * 0.7, 164 * 0.7);
   ctx.save();
   ctx.globalCompositeOperation = 'destination-in';
@@ -76,10 +78,10 @@ export function startLevel(ctx, game, dino) {
         if (endBubbles) {
 
           handleExplosion();
-          game.score += 0.025;
+          score += 0.025;
           generateShark(dino, game, ctx);
           generateMines(ctx, game, dino);
-          if (game.score <= 52)drawCounter(game, ctx);
+          if (score <= 52) drawCounter(game, ctx);
         }
         generateBubbles(ctx);
 
@@ -87,7 +89,7 @@ export function startLevel(ctx, game, dino) {
         ctx.fillRect(curtain1.x, curtain1.y, curtain1.width, curtain1.height);
         ctx.fillRect(curtain2.x, curtain2.y, curtain2.width, curtain2.height);
       }
-      if (game.score >= 52) {        
+      if (score >= 52) {
         curtain1.isOpen ? closeCurtain() : game.levelDone = true;
         vol > 0.1 ? vol -= 0.01 : prayerSound.stop();
       }
@@ -105,4 +107,8 @@ function dive() {
   isDiving = true;
 }
 
-export { dive };
+function updateScore(nb) {
+  score += nb;
+}
+
+export { dive, score, updateScore };
