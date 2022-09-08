@@ -36,9 +36,9 @@ class Action {
     this.ctx.save();
     this.ctx.font = "40px Tentacle";
     this.ctx.textAlign = "center";
-    this.ctx.textBaseline = "middle";
-    this.ctx.restore();
+    this.ctx.textBaseline = "middle";   
     this.ctx.fillText(this.action, this.x + 70, this.y - 5);
+    this.ctx.restore();
   }
 }
 

@@ -23,6 +23,8 @@ var vol = 1;
 
 var score = 0;
 
+var style = canvas.style;
+
 var curtain1 = {
   x: -600,
   y: 0,
@@ -94,6 +96,8 @@ export function startLevel(ctx, game, dino) {
         vol > 0.1 ? vol -= 0.01 : prayerSound.stop();
       }
     } else {
+      ctx.filter = "none";
+      style.filter = "none";
       drawFinalScene(ctx, game);
     }
   }
