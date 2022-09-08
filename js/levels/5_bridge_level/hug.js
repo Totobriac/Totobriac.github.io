@@ -3,11 +3,11 @@ import { partition } from "./piano.js";
 
 var hug = new Image();
 hug.crossOrigin = 'anonymous';
-hug.src = "./assets/5_bridge/hug.png";
+hug.src = "https://vincentcailly.com/assets/5_bridge/hug.png";
 
 var night = new Image();
 night.crossOrigin = 'anonymous';
-night.src = "./assets/5_bridge/starry_night_stars.png";
+night.src = "https://vincentcailly.com/assets/5_bridge/starry_night_stars.png";
 
 var tempCanvas = document.createElement('canvas');
 var tempContext = tempCanvas.getContext('2d');
