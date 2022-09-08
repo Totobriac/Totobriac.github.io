@@ -37,10 +37,7 @@ export function startLevel(ctx, game, dino) {
   ctx.fill();
   ctx.restore();
 
-  if (game.start) {
-
-    var element = document.getElementById("back");
-    element.classList.toggle("crt");
+  if (game.start) {      
 
     widthTickCount ++;
 
@@ -90,8 +87,6 @@ function drawEndIntro(ctx) {
   }
   ctx.restore();
 
-  var element = document.getElementById("back");
-  element.classList.remove("crt");
 
 }
 
