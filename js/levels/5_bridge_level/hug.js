@@ -2,12 +2,12 @@ import { endGame } from "./startLevel5.js";
 import { partition } from "./piano.js";
 
 var hug = new Image();
-hug.crossOrigin = 'anonymous';
-hug.src = "https://vincentcailly.com/assets/5_bridge/hug.png";
+hug.crossOrigin = 'Anonymous';
+hug.src = "https://totobriac.github.io/assets/5_bridge/hug.png";
 
 var night = new Image();
-night.crossOrigin = 'anonymous';
-night.src = "https://vincentcailly.com/assets/5_bridge/starry_night_stars.png";
+night.crossOrigin = 'Anonymous';
+night.src = "https://totobriac.github.io/assets/5_bridge/starry_night_stars.png";
 
 var tempCanvas = document.createElement('canvas');
 var tempContext = tempCanvas.getContext('2d');
@@ -78,8 +78,8 @@ function drawHug(ctx) {
     } else {
       hasEnded = true;
       alpha = 0;
-    }    
-  }  
+    }
+  }
 
   if (hasEnded) {
     drawStars(ctx);
