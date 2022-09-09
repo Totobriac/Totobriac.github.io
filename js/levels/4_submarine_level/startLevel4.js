@@ -98,6 +98,7 @@ export function startLevel(ctx, game, dino) {
     } else {
       ctx.filter = "none";
       style.filter = "none";
+      style.transform = "none";
       drawFinalScene(ctx, game);
     }
   }
