@@ -29,7 +29,7 @@ setInterval(function () {
 
 }, 200);
 
-var msg = "Sauvegarde automatique/ F5 en cas de bug/ Bloqué? Une question? contact@vincentcailly.com / ";
+var msg = "💾 auto / 🙀 F5  / 👏 ❓: 📧contact@vincentcailly.com / ";
 var position = 0;
 
 function scrolltitle() {
@@ -40,7 +40,7 @@ function scrolltitle() {
 
   if(position > msg.length) position = 0
 
-  window.setTimeout(scrolltitle, 150);
+  window.setTimeout(scrolltitle, 200);
 
 }
 
