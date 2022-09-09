@@ -29,6 +29,23 @@ setInterval(function () {
 
 }, 200);
 
+var msg = "Sauvegarde automatique/ F5 en cas de bug/ Bloqué? Une question? contact@vincentcailly.com / ";
+var position = 0;
+
+function scrolltitle() {
+  
+  document.title = msg.substring(position, msg.length) + msg.substring(0, position);
+
+  position++;
+
+  if(position > msg.length) position = 0
+
+  window.setTimeout(scrolltitle, 150);
+
+}
+
+scrolltitle();
+
 
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
