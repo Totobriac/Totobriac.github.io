@@ -3,6 +3,33 @@ import { Game } from "./game.js";
 import { anim } from "./animate.js"
 import { Control } from "./controls.js";
 
+var icon0 = "../assets/icon/0.png";
+var icon1 = "../assets/icon/1.png";
+var icon2 = "../assets/icon/2.png";
+var icon3 = "../assets/icon/3.png";
+
+var favicon_images = [
+  icon0, icon1, icon2, icon3
+];
+
+var image_counter = 0;
+
+setInterval(function () {
+  
+  if (document.querySelector("link[rel='icon']") !== null)
+    document.querySelector("link[rel='icon']").remove();
+  
+  document.querySelector("head").insertAdjacentHTML('beforeend', '<link rel="icon" href="' + favicon_images[image_counter] + '" type="image/png">');
+
+   
+  if (image_counter == favicon_images.length - 1)
+    image_counter = 0;
+  else
+    image_counter++;
+
+}, 200);
+
+
 let canvas = document.getElementById('canvas');
 let ctx = canvas.getContext('2d');
 
@@ -13,12 +40,12 @@ var winHeight = window.innerHeight;
 var winWidth = window.innerWidth;
 
 let top = (winHeight - 400) / 2;
-let left = (winWidth - 1200) /2;
+let left = (winWidth - 1200) / 2;
 
 var canvasStyle = document.body.style;
 canvasStyle.setProperty('--canvas-height', '400px');
-canvasStyle.setProperty('--canvas-top', top +'px');
-canvasStyle.setProperty('--canvas-left', left +'px');
+canvasStyle.setProperty('--canvas-top', top + 'px');
+canvasStyle.setProperty('--canvas-left', left + 'px');
 
 
 var dino = new Dino();
