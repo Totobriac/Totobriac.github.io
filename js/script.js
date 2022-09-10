@@ -54,7 +54,7 @@ var favicon_images = [
 
 var position = 0;
 
-var msg = [" 💾 auto", " 🪲 F5", "👏 ❓: 📧contact@vincentcailly.com"];
+var msg = [" 💾 auto", " 🪲 F5", "💬 ❓: 📧contact@vincentcailly.com"];
 
 var image_counter = 0;
 
