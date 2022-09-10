@@ -49,13 +49,13 @@ function createActions(ctx) {
   for (let i = 0; i < actionsList.length; i++) {
     if (i <= 4) {
       i == 4
-        ? act = new Action(actionsList[i], 900, aY1, ctx, "white", "black")
-        : act = new Action(actionsList[i], 900, aY1, ctx, "black", "white")
+        ? act = new Action(actionsList[i], 900, aY1, ctx, "rgb(217, 217, 217)", "black")
+        : act = new Action(actionsList[i], 900, aY1, ctx, "black", "rgb(217, 217, 217)")
       actions.push(act);
       aY1 += 50;
     }
     else {
-      act = new Action(actionsList[i], 1050, aY2, ctx, "black", "white");
+      act = new Action(actionsList[i], 1050, aY2, ctx, "black", "rgb(217, 217, 217)");
       actions.push(act);
       aY2 += 50;
     }

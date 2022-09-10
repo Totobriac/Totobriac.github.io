@@ -9,7 +9,6 @@ var walkingSound = new sound("./assets/7_mansion/sounds/footsteps.mp3", true);
 var grabLidSound = new sound("./assets/7_mansion/sounds/grab_lid.mp3", false);
 var fountSound = new sound("./assets/7_mansion/sounds/fountain.mp3", false);
 var grabTinSound = new sound("./assets/7_mansion/sounds/pickup_tin.mp3", false);
-var emptyWaterSound = new sound("./assets/7_mansion/sounds/pickup_water.mp3", false);
 var searchSound = new sound("./assets/7_mansion/sounds/search.mp3", false);
 var lighteningSound = new sound("./assets/7_mansion/sounds/light.mp3", false);
 var catSound = new sound("./assets/7_mansion/sounds/cat.mp3", false);
@@ -48,11 +47,7 @@ function playSound(sound) {
       case "grabTin":
         grabTinSound.volume(1);
         grabTinSound.play();
-        break;
-      case "grabWater":
-        emptyWaterSound.volume(1);
-        emptyWaterSound.play();
-      break;
+        break;     
       case "search":
         searchSound.volume(1);
         searchSound.play();

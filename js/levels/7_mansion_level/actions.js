@@ -3,9 +3,10 @@ import { endLevel } from "./startLevel7.js";
 import { resetAction } from "./side_bar.js";
 import { setDial } from "./text.js";
 import { playSound } from "./sound.js";
-import { rmSprite, addSprite} from "./outside_mansion.js";
+import { rmSprite, addSprite } from "./outside_mansion.js";
 import * as sprite from "./outside_sprite.js";
 import { rope, canWater } from "./trap.js";
+
 
 var openGateSprite = new Image();
 openGateSprite.src = "./assets/7_mansion/portail_open.png";
@@ -83,19 +84,19 @@ function stopWater() {
 }
 
 function emptyWater() {
-  playSound("grabWater");
+  playSound("grabLid");
   removeObject("boite de conserve");
   hasWater = false;
   objects.push(["boite de conserve pleine", sprite.canSpriteWater, false]);
-  sprite.bowl.name = "bassin  ";
+  sprite.bowl.name = "regarder le bassin";
+  grabFish()
+
 }
 
 function grabFish() {
-  if (!isRunningWater && !hasWater) {
-    objects.push(["poisson", sprite.dyingFish, true]);
-    sprite.bowl.name = "petit poisson ";
-    var deleteFish = setTimeout(rmItem, 2000, "petit poisson ");
-  }
+  objects.push(["poisson", sprite.dyingFish, true]);
+  sprite.bowl.name = "petit poisson ";
+  var deleteFish = setTimeout(rmItem, 2000, "petit poisson ");
 }
 
 function attachLid() {
@@ -219,7 +220,6 @@ var outsideAction = [
   ["Regarder", "plante grimpante", pass, " Cela ferait une bonne corde. "],
   ["Regarder", "lampe", pass, " Je pourrais y accrocher quelque-chose "],
   ["Regarder", "bassin", pass, " Le petit poisson s'amuse sans savoir que au dessus de lui... "],
-  ["Regarder", "bassin  ", renameBowl, " Le petit poisson gît au fond "],
 
   ["Utiliser", "answer1 ", endGame, " Pepeche? Mon petit chaton? C'est bien toi? "],
   ["Utiliser", "answer1", reply, " Jetez-le par dessus la grille "],
@@ -236,8 +236,6 @@ var outsideAction = [
   ["Prendre", "boite au fond de la poubelle", grabCan, " Je l'ai. "],
 
   ["Prendre", "scotch", grabDuct, " A quoi cela va me servir ? "],
-  // ["Pousser", "poubelle", push, " Oh hisse! "],
-  //["Pousser", "poubelle", endGame, " Oh hisse! "],
 
   ["Pousser", "poubelle ", push, " Oh hisse! "],
   ["Pousser", "poubelle  ", push, " Oh hisse! "],
@@ -250,8 +248,8 @@ var outsideAction = [
   ["Prendre", "poubelle  ", grabCat, " Je vais pieger ce chat, il va m'aider à rentrer. "],
 
   ["boulle de scotch", "tête de lion", stopWater, " L'eau de coule plus. "],
-  ["boite de conserve", "bassin ", emptyWater, " Je pourrai fabriquer un piége pour attraper le chat mais il me manque un appât. "],
-  ["boite de conserve", "bassin", emptyWater, " A quoi bon? L'eau n'arrête pas de couler, je ne pourrais pas le vider. "],
+  ["boite de conserve", "bassin ", emptyWater, " J'ai trouvé un bel appât pour le chat. "],
+  ["boite de conserve", "bassin", pass, " A quoi bon? L'eau n'arrête pas de couler, je ne pourrais pas le vider. "],
   ["corde", "lampe", setTrap, " J'ai peut-être une idée. "],
   ["couvercle", "corde", attachLid, " Je suis diabolique. "],
   ["boite de conserve pleine", "corde", attachTin, " Parfait. "],
