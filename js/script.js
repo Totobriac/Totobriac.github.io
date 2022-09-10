@@ -29,18 +29,20 @@ setInterval(function () {
 
 }, 200);
 
-var msg = "💾 auto / 🙀 F5  / 👏 ❓: 📧contact@vincentcailly.com / ";
+
 var position = 0;
 
-function scrolltitle() {
+var msg = [" 💾 auto"," 🪲 F5", "👏 ❓: 📧contact@vincentcailly.com" ]
+
+function scrolltitle() {  
   
-  document.title = msg.substring(position, msg.length) + msg.substring(0, position);
+  document.title = msg[position];
 
   position++;
 
-  if(position > msg.length) position = 0
+  if(position > msg.length - 1) position = 0
 
-  window.setTimeout(scrolltitle, 200);
+  window.setTimeout(scrolltitle, 1500);
 
 }
 
