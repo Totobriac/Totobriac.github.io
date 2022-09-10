@@ -3,6 +3,28 @@ import { Game } from "./game.js";
 import { anim } from "./animate.js"
 import { Control } from "./controls.js";
 
+let canvas;
+let ctx;
+
+canvas = document.getElementById('canvas');
+ctx = canvas.getContext('2d');
+
+canvas.height = 400;
+canvas.width = 1200;
+
+var winHeight = window.innerHeight;
+var winWidth = window.innerWidth;
+
+
+let top = (winHeight - 400) / 2;
+let left = (winWidth - 1200) / 2;
+
+var canvasStyle = document.body.style;
+
+canvasStyle.setProperty('--canvas-height', '400px');
+canvasStyle.setProperty('--canvas-top', top + 'px');
+canvasStyle.setProperty('--canvas-left', left + 'px');
+
 
 const getDeviceType = () => {
   const ua = navigator.userAgent;
@@ -46,16 +68,6 @@ var then = Date.now();
 var interval = 1000 / fps;
 var delta;
 
-let canvas;
-let ctx;
-
-canvas = document.getElementById('canvas');
-ctx = canvas.getContext('2d');
-
-let top = (winHeight - 400) / 2;
-let left = (winWidth - 1200) / 2;
-
-var canvasStyle = document.body.style;
 
 setInterval(function () {
 
@@ -82,25 +94,13 @@ function scrolltitle() {
 
 scrolltitle();
 
+
 if (device === "desktop") {
 
   var back = document.getElementById("back");
   back.style.display = "block";
 
-  canvas = document.getElementById('canvas');
-  ctx = canvas.getContext('2d');
-
-  canvas.height = 400;
-  canvas.width = 1200;
-
-  var winHeight = window.innerHeight;
-  var winWidth = window.innerWidth;
-
-  canvasStyle.setProperty('--canvas-height', '400px');
-  canvasStyle.setProperty('--canvas-top', top + 'px');
-  canvasStyle.setProperty('--canvas-left', left + 'px');
-
-  function animate() {
+  function animate() {    
     requestAnimationFrame(animate);
     now = Date.now();
     delta = now - then;
@@ -109,10 +109,10 @@ if (device === "desktop") {
       then = now - (delta % interval);
     }
   }
-
+  
   animate();
 
-} else {  
+} else {
   var monkey = document.getElementById("monkey");
   monkey.style.display = "block";
 }

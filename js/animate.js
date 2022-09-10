@@ -19,7 +19,7 @@ let start;
 
 export function anim(game, dino, ctx) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
-
+ 
   if(game.level === undefined) chooseLevel(ctx);
 
   game.frame++;

@@ -4,7 +4,7 @@
   --canvas-top : 50%;
 }
 
-#canvas {
+#canvas {  
   position: relative;
   top: 0;
   left: 0;
@@ -59,6 +59,7 @@
 }
 
 #back {
+  /*display: none;*/
   position: absolute;
   top: var(--canvas-top);
   left: 50%;
