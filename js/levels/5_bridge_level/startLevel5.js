@@ -53,7 +53,7 @@ export function startLevel(ctx, game, dino) {
 
   if (hasEnded) {
     stopPiano();
-    introOut(ctx, snap, game);
+    introOut(ctx, game);
   }
 }
 
@@ -61,10 +61,10 @@ function startGame() {
   start = true;
 };
 
-function endGame(ctx, snp) {
+function endGame(ctx) {
   game.start = false;
   hasEnded = true;
-  snap = snp;
+  
 };
 
 export { endGame };

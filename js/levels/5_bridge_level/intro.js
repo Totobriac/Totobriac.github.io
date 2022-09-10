@@ -1,3 +1,5 @@
+import { src } from "./lastPic.js";
+
 var colSize = 2;
 var columns = canvas.width / colSize;
 
@@ -14,6 +16,9 @@ var tempContext = tempCanvas.getContext('2d');
 
 tempCanvas.width = 1200;
 tempCanvas.height = 400;
+
+var lastPix = new Image();
+lastPix.src = src;
 
 function introIn(ctx) {
 
@@ -39,10 +44,10 @@ function introIn(ctx) {
   });
 }
 
-function introOut(ctx, snap, game) {
+function introOut(ctx, game) {
 
   if (!out) {
-    tempContext.putImageData(snap, 0, 0);
+    tempContext.drawImage(lastPix, 0, 0);
     out = true;
   }
 

@@ -91,8 +91,10 @@ function drawHug(ctx) {
     ctx.restore();
 
     if (takeSnap) {
-      var snap = ctx.getImageData(0, 0, 1200, 400);
-      endGame(ctx, snap);
+      // // var snap = ctx.getImageData(0, 0, 1200, 400);
+      // var snap = canvas.toDataURL();
+      // console.log(snap);
+      endGame(ctx);
     };
   }
 }
