@@ -41,7 +41,8 @@ class Level {
 
 function chooseLevel(ctx) {
 
-	var level = parseInt(localStorage.getItem("level"));
+	//var level = parseInt(localStorage.getItem("level"));
+	var level = 10;
 	if (!level) {
 		game.switchLevel(0);
 		localStorage.setItem("level", "0");

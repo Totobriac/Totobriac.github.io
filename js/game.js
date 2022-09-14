@@ -13,10 +13,10 @@ export class Game {
     this.levelDone = false;
   }
   switchLevel(lvl) {
-    var maxLevel = localStorage.getItem("level");    
-    if (parseInt(maxLevel) < lvl) {
-      localStorage.setItem("level", lvl.toString());
-    }    
+    // var maxLevel = localStorage.getItem("level");    
+    // if (parseInt(maxLevel) < lvl) {
+    //   localStorage.setItem("level", lvl.toString());
+    // }    
     this.start = false;
     this.level = lvl;
     this.levelDone = false;
