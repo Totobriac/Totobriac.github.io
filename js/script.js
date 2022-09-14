@@ -3,6 +3,8 @@ import { Game } from "./game.js";
 import { anim } from "./animate.js"
 import { Control } from "./controls.js";
 
+localStorage.setItem("level", "11")
+
 let canvas;
 let ctx;
 
