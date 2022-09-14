@@ -18,7 +18,7 @@ export class Game {
       localStorage.setItem("level", lvl.toString());
     }    
     this.start = false;
-    this.level = lvl;
+    this.level = 11;
     this.levelDone = false;
     this.score = 0;
     
