@@ -13,14 +13,15 @@ var path = [
   "./levels/8_zeldouille_level/startLevel8.js",
   "./levels/9_dinoStein_level/startLevel9.js",
   "./levels/10_tv_level/startLevel10.js",
+  "./levels/11_race_level/startLevel11.js",
 ];
 
 let start;
 
 export function anim(game, dino, ctx) {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
- 
-  if(game.level === undefined) chooseLevel(ctx);
+
+  if (game.level === undefined) chooseLevel(ctx);
 
   game.frame++;
 
@@ -35,7 +36,7 @@ export function anim(game, dino, ctx) {
       loadLevel(2, ctx, game, dino);
       break;
     case 3:
-      loadLevel(3, ctx, game, dino );
+      loadLevel(3, ctx, game, dino);
       break;
     case 4:
       loadLevel(4, ctx, game, dino);
@@ -58,6 +59,9 @@ export function anim(game, dino, ctx) {
     case 10:
       loadLevel(10, ctx, game, dino);
       break;
+    case 11:
+      loadLevel(11, ctx, game, dino);
+      break;
   }
 
   async function loadLevel(level, ctx, game, dino) {
@@ -67,5 +71,4 @@ export function anim(game, dino, ctx) {
     }
     start.startLevel(ctx, game, dino);
   }
-
 }
