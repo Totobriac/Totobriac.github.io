@@ -1,7 +1,7 @@
 import { raceStarted } from "./startLevel11.js";
 
 class Up {
-  constructor(ctx, running, idle) {
+  constructor(ctx, running, idle, colSize, lineSize, realH, realW , yOff) {
     this.ctx = ctx;
     this.maxTick = 4;
     this.tick = 0;
@@ -12,19 +12,24 @@ class Up {
 		this.idle = idle;
     this.speed = 0;
     this.xOffset = 0;
+    this.colSize = colSize;
+    this.lineSize = lineSize;
+    this.realW = realW;
+    this.realH = realH;
+    this.yOff = yOff;
   }
   draw() {
     this.update();
     this.ctx.drawImage(
       this.sprite,
-      this.col * 266,
-      this.line * 171,
-      266,
-      171,
+      this.col * this.colSize,
+      this.line * this.lineSize,
+      this.colSize,
+      this.lineSize,
       this.xOffset,
-      200,
-      133,
-      85
+      this.yOff,
+      this.realH,
+      this.realW,
     );
   }
   update() {

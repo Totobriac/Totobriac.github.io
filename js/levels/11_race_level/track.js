@@ -55,7 +55,6 @@ function drawTrack(ctx) {
     ctx.fillText(number.toString(), i * 450 + 450 + dist, 390);
 	ctx.fillText(number.toString(), i * 450 + 450 + distUp, 294);
   });
-  console.log(dist);
 }
 
 function upDist(speed) {
