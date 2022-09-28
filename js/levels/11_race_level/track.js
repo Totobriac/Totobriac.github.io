@@ -1,4 +1,4 @@
-import { up, raceStarted } from "./startLevel11.js";
+import { up, down, raceStarted } from "./startLevel11.js";
 
 var dTrack = new Image();
 dTrack.src = "./assets/11_race/dTrack.png";
@@ -28,7 +28,12 @@ var dist = 0;
 
 var distUp = 0;
 
+var someWon = false;
+
 var numbers = [...Array(10).keys()].map((i) => (i + 1) * 10);
+
+var styleU = 0;
+var styleD = 0;
 
 function drawTrack(ctx) {
   if (raceStarted) {
@@ -45,20 +50,65 @@ function drawTrack(ctx) {
 
   ctx.drawImage(board, 360, 0, 480, 174);
 
-  ctx.drawImage(fLine, 0, 0, 22, 40, 9 * 450 + 450 + dist, 320, 44, 80);
-
-  ctx.drawImage(fLine, 0, 0, 22, 40, 9 * 450 + 450 + distUp, 224, 44, 80);
+  ctx.drawImage(fLine, styleD, 0, 22, 40, 9 * 450 + 450 + dist, 320, 44, 80);
+  ctx.drawImage(fLine, styleU, 0, 22, 40, 9 * 450 + 450 + distUp, 224, 44, 80);
 
   numbers.forEach((number, i) => {
-    ctx.font = "30px arcade";
+    ctx.font = "24px Pixel";
     ctx.fillStyle = "black";
     ctx.fillText(number.toString(), i * 450 + 450 + dist, 390);
-	ctx.fillText(number.toString(), i * 450 + 450 + distUp, 294);
+    ctx.fillText(number.toString(), i * 450 + 450 + distUp, 294);
   });
+
+  if (!someWon) {
+    ctx.font = "24px Pixel";
+    ctx.fillStyle = "white";
+    ctx.fillText("Pour avancer", 400, 50);
+    ctx.fillText("Appuyez alternativement", 400, 80);
+    ctx.fillText("sur ⬅️ et ➡️", 400, 110);
+  }
+
+  var winner;
+
+  if (someWon) {
+    if (down.hasWon) {
+      winner = down.type;
+    } else {
+      winner = up.type;
+    }
+  }
+
+  if (!someWon) {
+    ctx.font = "24px Pixel";
+    ctx.fillStyle = "white";
+    ctx.fillText("Pour avancer", 400, 50);
+    ctx.fillText("Appuyez alternativement", 400, 80);
+    ctx.fillText("sur ⬅️ et ➡️", 400, 110);
+  } else  {
+    ctx.font = "24px Pixel";
+    ctx.fillStyle = "white";
+    ctx.fillText("Les " + winner, 400, 50);
+    ctx.fillText("sont plus fort.", 400, 80);
+    ctx.fillText("pour en debattre:", 400, 110);
+    ctx.fillText("contact@vincentcailly.com", 395, 160);
+
+  }
+
+
+
+  if (down.xOffset + down.realW > 9 * 450 + 450 + dist && !someWon) {
+    someWon = true;
+    styleD = 22;
+    down.won();
+  } else if (up.xOffset + up.realW > 9 * 450 + 450 + distUp && !someWon) {
+    someWon = true;
+    styleU = 22;
+    up.won();
+  }
 }
 
 function upDist(speed) {
   dist -= speed / 10;
 }
 
-export { drawTrack, upDist };
+export { drawTrack, upDist, someWon };

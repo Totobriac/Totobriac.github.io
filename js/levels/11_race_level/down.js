@@ -1,7 +1,7 @@
 import { speed } from "./startLevel11.js";
 
 class Down {
-  constructor(ctx, running, idle, colSize, lineSize, realH, realW, yOff) {
+  constructor(ctx, running, idle, colSize, lineSize, realH, realW, yOff, type) {
     this.ctx = ctx;
     this.maxTick = 4;
     this.tick = 0;
@@ -14,7 +14,9 @@ class Down {
     this.lineSize = lineSize;
     this.realW = realW;
     this.realH = realH;
-	this.yOff = yOff;
+    this.yOff = yOff;
+    this.hasWon = false;
+    this.type = type;
   }
   draw() {
     this.update();
@@ -57,6 +59,9 @@ class Down {
     this.line = Math.floor(this.frame / 5);
     this.col = this.frame - this.line * 5;
     this.xOffset < speed * 10 ? (this.xOffset += 0.5) : (this.xOffset -= 0.5);
+  }
+  won() {
+    this.hasWon = true;
   }
 }
 

@@ -4,6 +4,11 @@ import { drawTrack, upDist } from "./track.js";
 import { Controls } from "./controls.js";
 import { ctx } from "../../script.js";
 
+import { sound } from "../../sound.js";
+
+var music = new sound("./assets/11_race/chariot.mp3");
+music.volume(1);
+
 var rightLeftKeys = new Image();
 rightLeftKeys.src = "./assets/11_race/intro.png";
 
@@ -14,17 +19,17 @@ var controls;
 
 window.addEventListener("keydown", (e) => {
   if (e.code === "ArrowLeft") {
-    if (!up) up = new Up(ctx, runningElefant, idleElefant, 266,171,133,85, 200);
-    if (!down) down = new Down(ctx, runningHipo, idleHipo, 198,175,133,117, 270);
+    if (!up) up = new Up(ctx, runningElefant, idleElefant, 266,171,133,85, 200, "Elephants");
+    if (!down) down = new Down(ctx, runningHipo, idleHipo, 198,175,133,117, 270, "Hippopotames");
     if (!controls) controls = new Controls();
 
     startGame();
   } else if(e.code === "ArrowRight") {
     startGame();
-    if (!up) up = new Up(ctx, runningHipo, idleHipo, 198,175,133,117, 180);
-    if (!down) down = new Down(ctx, runningElefant, idleElefant, 266,171,133,85, 300);
+    if (!up) up = new Up(ctx, runningHipo, idleHipo, 198,175,133,117, 180, "Hippopotames");
+    if (!down) down = new Down(ctx, runningElefant, idleElefant, 266,171,133,85, 300, "Elephants");
     if (!controls) controls = new Controls();
-
+    music.play();
   }
 })
 
@@ -110,4 +115,4 @@ function startGame() {
   start = true;
 };
 
-export { speedUp, speed, raceStarted, up, startLevel };
+export { speedUp, speed, raceStarted, up,down, startLevel };

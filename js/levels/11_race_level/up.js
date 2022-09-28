@@ -1,15 +1,16 @@
 import { raceStarted } from "./startLevel11.js";
+import { someWon } from "./track.js";
 
 class Up {
-  constructor(ctx, running, idle, colSize, lineSize, realH, realW , yOff) {
+  constructor(ctx, running, idle, colSize, lineSize, realH, realW, yOff, type) {
     this.ctx = ctx;
     this.maxTick = 4;
     this.tick = 0;
     this.frame = 0;
-		this.sprite = idle;
-		this.running = running;
+    this.sprite = idle;
+    this.running = running;
     this.maxTick = 4;
-		this.idle = idle;
+    this.idle = idle;
     this.speed = 0;
     this.xOffset = 0;
     this.colSize = colSize;
@@ -17,6 +18,8 @@ class Up {
     this.realW = realW;
     this.realH = realH;
     this.yOff = yOff;
+    this.hasWon = false;
+    this.type = type;
   }
   draw() {
     this.update();
@@ -29,27 +32,28 @@ class Up {
       this.xOffset,
       this.yOff,
       this.realH,
-      this.realW,
+      this.realW
     );
   }
   update() {
-
     if (this.speed < 10) {
-			this.maxTick = 3
-		} else if (this.speed < 20) {
-			this.maxTick = 2
-		} else if (this.speed <+ 30) {
-			this.maxTick = 1
-		} 
+      this.maxTick = 3;
+    } else if (this.speed < 20) {
+      this.maxTick = 2;
+    } else if (this.speed < +30) {
+      this.maxTick = 1;
+    }
 
-    if (raceStarted && this.speed < 30) this.speed += 0.1;
-		if(this.speed > 0) {
-			this.sprite = this.running;
-			this.maxFrame = 15;
-		} else {
-			this.sprite = this.idle;
-			this.maxFrame = 19;
-		}
+    if (raceStarted && this.speed < 30 && !someWon){
+      this.speed += 0.1;
+    }   
+    if (this.speed > 0) {
+      this.sprite = this.running;
+      this.maxFrame = 15;
+    } else {
+      this.sprite = this.idle;
+      this.maxFrame = 19;
+    }
 
     if (this.tick < this.maxTick) {
       this.tick++;
@@ -60,8 +64,12 @@ class Up {
     this.line = Math.floor(this.frame / 5);
     this.col = this.frame - this.line * 5;
 
-    this.xOffset < this.speed * 10 ? this.xOffset += 0.5 : this.xOffset -= 0.5;
-
+    this.xOffset < this.speed * 10
+      ? (this.xOffset += 0.5)
+      : (this.xOffset -= 0.5);
+  }
+  won() {
+    this.hasWon = true;
   }
 }
 
